@@ -1,52 +1,35 @@
-from filme import Filme
-from cliente import Cliente
-from sessao import Sessao
-from ingresso import Ingresso
-class Sistema:
-    def __init__(self):
-        self.filmes = []
-        self.clientes = []
-        self.sessoes = []
-        self.ingressos = []
+from filme import menu_filmes
+from cliente import menu_clientes
+from sessao import menu_sessoes
+from ingresso import menu_ingressos
 
-    def cadastrar_filme(self):
-        titulo = input("Digite o título do filme: ")
-        genero = input("Digite o gênero do filme: ")
-        duracao = int(input("Digite a duração do filme (em minutos): "))
-        classificacao_etaria = input("Digite a classificação etária: ")
+while True:
+    print("\n" + "=" * 50)
+    print("        SISTEMA CINEMAX - MENU PRINCIPAL")
+    print("=" * 50)
+    print("1 - Gerenciar Filmes")
+    print("2 - Gerenciar Clientes")
+    print("3 - Gerenciar Sessões")
+    print("4 - Gerenciar Ingressos")
+    print("0 - Sair")
 
-        novo_filme = Filme(titulo, genero, duracao, classificacao_etaria)
-        self.filmes.append(novo_filme)
-        print("Filme cadastrado com sucesso!")
+    opcao = input("Escolha uma opção: ")
 
-    def cadastrar_cliente(self):
-        nome = input("Digite o nome do cliente: ")
-        cpf = input("Digite o CPF do cliente: ")
-        email = input("Digite o e-mail do cliente: ")
-        tipo_cliente = input("Digite o tipo de cliente (comum ou estudante): ")
+    if opcao == "1":
+        menu_filmes()
 
-        novo_cliente = Cliente (nome, cpf, email, tipo_cliente)
-        self.clientes.append(novo_cliente)
-        print("Cliente cadastrado com sucesso!")
+    elif opcao == "2":
+        menu_clientes()
 
-    def cadastrar_sessao(self):
-        codigo = input("Digite o código da sessão: ")
-        filme = input("Digite o nome do filme: ")
-        horario = input("Digite o horário da sessão: ")
-        sala = int(input("Digite a sala: "))
-        quantidade_assentos = int(input("Digite a quantidade de assentos: "))
-        assentos_disponiveis = quantidade_assentos
+    elif opcao == "3":
+        menu_sessoes()
 
-        nova_sessao = Sessao (filme, horario, sala, quantidade_assentos, assentos_disponiveis)
-        self.sessoes.append(nova_sessao)
-        print("Sessão cadastrada com sucesso!")
+    elif opcao == "4":
+        menu_ingressos()
 
-    def cadastrar_ingresso(self):
-        cliente = input("Digite o nome do cliente: ")
-        codigo_sessao = input("Digite o código da sessão: ")
-        valor = float(input("Digite o valor do ingresso: "))
-        assento = input("Digite o número do assento: ")
+    elif opcao == "0":
+        print("\nEncerrando o sistema CineMax. Até logo!")
+        break
 
-        novo_ingresso = Ingresso (cliente, codigo_sessao, valor, assento)
-        self.ingressos.append(novo_ingresso)
-        print("Ingresso cadastrado com sucesso!")
+    else:
+        print("\nOpção inválida!")
